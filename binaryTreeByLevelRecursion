@@ -1,0 +1,21 @@
+const arbol = {
+    label: 'A'
+    ,leftChild: {label:'B', leftChild:{label:'D',leftChild:{label:'H'}},rightChild:{label:'E'} }
+    ,rightChild: {label:'C', leftChild:{label:'F'}, rightChild:{label:'G'}}
+}
+
+let lista = []
+function recorrePorNivel(obj) {
+    if(!obj) 
+    return;
+    console.log(obj.label);
+    if(obj.leftChild){
+        lista.unshift(obj.leftChild);
+    }
+    if(obj.rightChild){
+        lista.unshift(obj.rightChild);
+    }
+    const siguiente = lista.pop();
+    recorrePorNivel(siguiente);
+}
+recorrePorNivel(arbol);
