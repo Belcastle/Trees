@@ -1,0 +1,27 @@
+const a = {
+    label: 'A'
+    ,leftChild: {label:'B', leftChild:{label:'D',leftChild:{label:'H'}},rightChild:{label:'E'} }
+    ,rightChild: {label:'C', leftChild:{label:'F'}, rightChild:{label:'G'}}
+}
+
+let listaObjetos = [];
+let lista2 = [];
+
+function recorrePorNivel(obj){//nodo
+    listaObjetos.unshift(obj);
+    while(listaObjetos.length > 0){
+        const nodo = listaObjetos.pop();
+        console.log(nodo.label);// logs in level order
+        if(!lista2.includes(nodo))lista2.unshift(nodo);
+        if(nodo.leftChild){
+            listaObjetos.unshift(nodo.leftChild);
+        }
+        if(nodo.rightChild){
+            listaObjetos.unshift(nodo.rightChild);
+        }
+    }
+    for(const nodo of lista2){
+    	console.log(nodo.label);//logs in reverse level order
+    }
+}
+recorrePorNivel(a);
